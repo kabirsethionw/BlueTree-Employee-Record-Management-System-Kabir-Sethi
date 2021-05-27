@@ -59,7 +59,7 @@ public class EmployeeController {
 	public ResponseEntity<?> addEmployee(@RequestBody Employee emp){
 		try {
 		
-			if(emp.getDob().getYear()-LocalDate.now().getYear()<18) {
+			if(emp.getDob().getYear()-LocalDate.now().getYear()>18) {
 				System.out.println("hello");
 				emp.setStatus(Status.NOT_WORKING);
 				employeeRepository.save(emp);
@@ -106,7 +106,7 @@ public class EmployeeController {
 	@PutMapping("/update")
 	private ResponseEntity<?> updateEmployee(@RequestBody UpdateBody body){
 		try {
-			if(body.getField() == "dob" && Integer.parseInt(body.getValue().split("-")[0])-LocalDate.now().getYear()<18) {
+			if(body.getField() == "dob" && Integer.parseInt(body.getValue().split("-")[0])-LocalDate.now().getYear()>18) {
 				String statement = "Update employee set "+body.getField()+" = ?, updated_at = CAST(? AS DATE), status = 'NOT_WORKING' where id = ?";
 				System.out.println("Here: "+body.getValue());
 				jdbcTemplate.update(statement, body.getValue(), LocalDate.now(), Integer.parseInt(body.getId()));
