@@ -1,0 +1,358 @@
+@import url('https://fonts.googleapis.com/css2?family=Pattaya&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Kanit&display=swap');
+
+body{
+    margin: 0px;
+    overflow-y: auto;
+    height: 600px;
+    overflow: overlay;
+    overflow-x: hidden;
+}
+
+
+#top-nav{
+    position: fixed;    
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.384);
+    height: 8vh;
+    padding: 0px;
+    width: 100vw;
+    padding: 5px;
+    padding-left: 5px;
+    z-index: 999;
+    background-color: white;
+}
+
+#logo{
+    position: relative;;
+    font-family: 'Pattaya', sans-serif;
+    color: rgb(0, 0, 128);
+    font-weight: bold;
+    display: inline;
+    font-size:x-large;    
+}
+
+main{
+    min-height: 100%;
+}
+
+#tree-symbol{
+    color: transparent;  
+    text-shadow: 0 0 0 rgb(0, 0, 128);
+    display: inline;
+    font-size:x-large;
+    position: relative;
+    bottom: 1vh;
+}
+
+#bottom{
+    box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.384);
+    height: 30vh;
+    background-color: white;
+    font-family: 'Alfa Slab One', cursive;
+font-family: 'Kanit', sans-serif;
+    
+}
+
+#footer-box1{
+    position: relative;
+    padding-left: 7px;
+    background-color: white;
+    height: 25vh;
+    width: 48vw;
+    display: inline-block;
+    border-right: 3px solid rgb(0, 0, 128);
+    top: 2.5vh;
+    word-wrap: break-word;
+    
+}
+#footer-box2{
+    position: relative;
+    padding-left: 5px;
+    background-color: white;
+    height: 25vh;
+    width: 48vw;
+    display: inline-block;
+    top: 2.5vh;
+    word-wrap: break-word;
+}
+
+#footer-box1 > h3{  
+    color: rgb(0, 0, 128);
+}
+
+#footer-box2 > h3{
+    color: rgb(0, 0, 128);
+}
+
+.onScrollBar::-webkit-scrollbar {
+    width: 5px;
+    background-color: transparent;
+  }
+  
+  /* Track */
+  .onScrollBar::-webkit-scrollbar-track {
+    background-color: transparent;
+    z-index: -9999;
+  }
+   
+  /* Handle */
+  .onScrollBar::-webkit-scrollbar-thumb {
+    background: rgb(0, 0, 128); 
+  }
+  
+  /* Handle on hover */
+  .onScrollBar::-webkit-scrollbar-thumb:hover {
+    background: black; 
+  }
+
+ 
+  ::-webkit-scrollbar-track {
+    box-shadow: none;  
+    -webkit-box-shadow: none;
+    background-color: transparent;
+  }
+  ::-webkit-scrollbar {
+    width: 0px;
+    background-color: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
+
+#transparent{
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.233);
+  box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.384);
+  height: 100%;
+  width: 100%;
+  font-family: 'Alfa Slab One', cursive;
+font-family: 'Kanit', sans-serif;
+z-index: 9999;
+display: none;
+/* filter:blur(8px); */
+/* -webkit-filter: blur(8px); */
+}
+
+#loading{
+  z-index: 10000;
+  position: fixed;
+  background-color: rgb(170, 170, 170);
+  height: 100px;
+  width: 100px;
+  margin-left: calc(50vw - 50px);
+  margin-top:calc(50vh - 50px);
+}
+
+#circle{
+  position: inherit;
+  border: 8px solid whitesmoke;
+  border-radius: 50%;
+  border-top: 8px solid rgb(0, 0, 128); 
+  height: 60px;
+  width: 60px;
+  z-index: 10001;
+  margin: 11.5px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@-webkit-keyframes spin{
+  0%{rotate: 0deg;}
+  100%{rotate: 360deg;}
+}
+
+main{
+  padding: 20px;
+  font-family: 'Alfa Slab One', cursive;
+font-family: 'Kanit', sans-serif;
+}
+
+#controls{
+  position: relative;
+  top: 60px;
+}
+
+.button1{
+  background-color:rgb(0, 0, 128);
+  border: none;
+  margin: 0px;
+  padding: 4px;
+  padding-bottom: 17px;
+  border-radius:7px;
+  color: whitesmoke;
+  position: relative;
+  bottom: 5px;
+  font-family: 'Alfa Slab One', cursive;
+  font-family: 'Kanit', sans-serif;
+}
+
+.button2{
+  background-color:rgb(170, 170, 170);
+  border: none;
+  margin: 0px;
+  padding: 4px;
+  padding-bottom: 17px;
+  border-radius:7px;
+  color: rgb(0, 0, 128);
+  font-family: 'Alfa Slab One', cursive;
+  font-family: 'Kanit', sans-serif;
+}
+
+#sheets{
+  font-family: 'Alfa Slab One', cursive;
+font-family: 'Kanit', sans-serif;
+  z-index: 2;
+  position: relative;
+  bottom: 15px;
+  width: 99%;
+  height: 200px;
+  background-color: rgb(0, 0, 128);
+  color:whitesmoke;
+  padding: 5px;
+}
+
+h2{
+  margin-top: 5px;
+  margin-bottom: 0px;
+}
+
+select{
+  border: none;
+  background-color: rgb(170, 170, 170);
+  height: 20px;
+  margin-top: 3px;
+}
+
+input[type=text]{
+  border: none;
+  height: 20px;
+  margin-top: 5px;
+  box-sizing: border-box;
+  transition: 0.5s;
+  outline: none;
+}
+
+#find-value{
+  position: relative;
+  bottom:0.5px;
+}
+
+input[type=text]:focus{
+  border: 0.5px solid black;
+}
+
+.submit-button{
+  margin-top: 5px;
+  background-color:rgb(170, 170, 170);
+  border: none;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 10px 5px;
+  margin-top: 10px;
+}
+
+#find-sheet{
+  display: block;
+}
+
+#add-sheet{
+  display: none;
+}
+
+#update-sheet{
+  display:none;
+}
+
+#remove-sheet{
+  display: none;
+}
+
+#blueTree-tag{
+  z-index: 50;
+  border-radius: 50%;
+  height: 200px;
+  width: 200px;
+  position: absolute;
+  font-family: 'Pattaya', sans-serif;
+  background-color: white;
+  transform: rotate(35deg);
+  color:rgb(0, 0, 128);
+  text-align: center;
+  left: 76.5%;
+  bottom: 25%;
+}
+
+#blueTree-tag > strong{
+  position: relative;
+  top: 77px;
+  font-size: xx-large;
+}
+
+#update-employee-value{
+  position: relative;
+  bottom: 0.5px;
+}
+
+#response{
+  position: relative;
+  top: 80px ;/*adjust me*/
+  margin-bottom: 250px;
+}
+
+#response > h2{
+  color:rgb(0, 0, 128);
+}
+
+thead{
+  color: whitesmoke;
+  background-color:rgb(0, 0, 128);
+}
+
+th,td{
+  border: 1px solid whitesmoke;
+  padding: 2px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#query-result-table{
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 25px 0px;
+  overflow: hidden;
+  /* border: 3px solid rgb(170, 170, 170); */
+}
+
+tbody > tr:nth-child(2n){
+  background-color: rgb(170, 170, 170);
+}
+
+.error-message{
+  background-color: whitesmoke;
+  border-radius: 7px;
+  color: rgb(255, 59, 59);
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.411);
+  padding: 1px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-left: 3px;
+  display:none;
+  word-wrap: break-word;
+  width: fit-content;
+}
+
+input[type=file]::file-selector-button {
+  border: none;
+  background-color: rgb(170, 170, 170);;
+}
+
+input[type=file]{
+  border: 3px solid rgb(0, 0, 128);
+}

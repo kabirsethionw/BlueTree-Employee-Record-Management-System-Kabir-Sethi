@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlueTree</title>
+    <link rel="stylesheet" th:href="@{/css/BlueTree-styles.css}">
+    <script th:src="@{http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js}" type="text/javascript"></script>
+    <script type="text/javascript" th:src="@{/js/blueTree-listener.js}"></script>
+</head>
+<body>
+    <header>
+        <div id="top-nav">
+            <h3 id="tree-symbol">&#127794;<h3 id="logo"><strong> BlueTree</strong></h3></h3>
+        </div>
+        <div id="transparent"><div id="loading"><div id="circle"></div></div></div>    
+    </header>
+    <main>
+        <div id="operations-nav">
+            <div id="controls">
+                <button id="find-control-button" class="button1">Find</button><!--
+                --><button id="add-control-button" class="button2">Add</button><!--
+                --><button id="update-control-button" class="button2">Update</button><!--
+                --><button id="remove-control-button" class="button2">Remove</button><br>
+                <div id="sheets">
+                    <div id="find-sheet">
+                        <h2>Find Employees </h2>For a given id or name. <br><br>
+                        <form action="" id="find-form" enctype="text/plain">
+                            <label for="id-or-name">Select id or name as search key: </label>
+                            <select name="id-or-name" id="id-or-name">
+                                <option value="id">Id</option>
+                                <option value="name">Name</option>
+                                <label for="find-value">Enter Value</label>
+                                <input type="text" name="find-value" id="find-value" required ><br>
+                                <button id="find" class="submit-button">Find</button><span class="error-message">&#10008; Error: </span>
+                            </select>
+                        </form>
+                    </div>
+
+                    <div id="add-sheet">
+                        <h2>Add Employee</h2>Add details of employee. <br><br>
+                        <form action="" id="add-form" enctype="text/plain">
+                        <label for="name">Name: </label>
+                        <input type="text" name="name" id="add-employee-name" required>
+                        <label for="email"> Email: </label>
+                        <input type="text" name="email" id="add-employee-email" required><br>
+                        <label for "dob">Dob: </label>
+                        <input type="date" name="dob">                 
+                        <label for="status">Status: </label>
+                        <select name="status" id="add-employee-status">
+                            <option value="WORKING">Working</option>
+                            <option value="NOT_WORKING">Not working</option>
+                        </select>
+                        <label for="dept">Dept: </label>
+                        <select name="dept" id="add-employee-dept">
+                            <option value="SALES">Sales</option>
+                            <option value="IT">IT</option>
+                            <option value="QA">QA</option>
+                            <option value="MANAGEMENT">Management</option>
+                        </select><br>
+                        <label for="address">Address</label>
+                        <input type="text" name="address" id="add-employee-adress">
+                        <label for="phone">Phone no.</label>
+                        <input type="text" name="phone" id="add-employee-phone" required><br>
+                        <button id="add" class="submit-button">Add</button><span class="error-message">&#10008; Error: </span>
+                        </form>
+                    </div>
+
+                    <div id="update-sheet">
+                        <h2>Update Employee</h2>update employee data(one field at a time) by id search key. <br><br>
+                        <form action="" id="update-form" enctype="text/plain">
+                        <label for="id">Id: </label>
+                        <input type="text" name="id" id="update-employee-id" required><br>
+                        <label for="field">Select field to be updated: </label>
+                        <select name="field" id="update-employee-field">
+                            <option value="name">Name</option>
+                            <option value="email">Email</option>
+                            <option value="dept">Dept</option>
+                            <option value="phone">Phone</option>
+                             <option value="dob">Dob</option>
+                              <option value="address">Address</option>
+                        </select><!--  
+                        --><input type="text" name="value" id="update-employee-value" required><br>
+                        <button id="update" class="submit-button">Update</button><span class="error-message">&#10008; Error: </span>
+                    </form>
+                    </div>
+                    <div id="remove-sheet">
+                        <h2>Delete Employee</h2>Change the employment status of an employee by their id. <br><br>
+                        <form action="" id="remove-form" enctype="text/plain">
+                        <label for="id">Id: </label>
+                        <input type="text" name="id" id="remove-employee-id" required><br>
+                        <label for="status">Set status: </label>
+                        <select name="status" id="remove-employee-status">
+                            <option value="WORKING">Working</option>
+                            <option value="NOT_WORKING">Not working</option>
+                        </select><br>
+                        <button id="remove" class="submit-button">Remove</button><span class="error-message">&#10008; Error: </span>
+                    </form>
+                    </div>
+                </div>
+                <div id="blueTree-tag"><strong>BlueTree</strong></div>
+            </div>
+        </div>
+
+        <div style="position:relative; top:50px">
+            <h2>Upload Excel File</h2>Upload multiple rows. 
+            <form action="http://localhost:8072/employee/uploadFile" method="POST" enctype="multipart/form-data" >
+                <input type="file" name="file" accept=".xls,.xlsx" /> <input
+                type="submit" value="Upload file" style="border:none; background-color:rgb(170, 170, 170); padding:3px"/>
+            </form>
+        </div>
+
+        <div id="response">
+            <h2>Result: </h2>
+            <table id="query-result-table">
+                <thead>
+                <tr>
+                    <th>S.no</th>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Dob</th>
+                    <th>Adress</th>
+                    <th>Phone</th>
+                    <th>Dept</th>
+                    <th>Status</th>
+                    <th>UpdatedAt</th>
+                </tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table>    
+        </div>
+    </main>
+    <footer>
+        <div id="bottom">
+            <div id="footer-box1">
+                <h3 style="margin: 5px; margin-left: 0px;">Contact Info:</h3>
+                <strong style="font-weight: bold;">Name: </strong>Kabir Sethi<br>
+                <strong style="font-weight: bold;">Email: </strong><a href="mailto:kabirsethione@gmail.com">kabirsethione@gmail.com</a>
+            </div>
+            <div id="footer-box2">
+                <h3 style="margin: 5px; margin-left: 0px;">Contact Info:</h3>
+                <strong style="font-weight: bolder;">GitHub: </strong><a href="https://github.com/kabirsethionw">GitHub Profile</a><br>
+                <strong style="font-weight: bolder;">LinkIn: </strong><a href="https://www.linkedin.com/in/kabir-sethi-946211200/">LinkIn Profile</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', (e) => {
+    if (document.body.classList.contains("onScrollBar") === false) {
+        document.body.classList.add("onScrollBar");
+        setTimeout(function(){ document.body.classList.remove("onScrollBar"); }, 1000);
+        
+        }
+        }, true); 
+    </script>
+</body>
+</html>
