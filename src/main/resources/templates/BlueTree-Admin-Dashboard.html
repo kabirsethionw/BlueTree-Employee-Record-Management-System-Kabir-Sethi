@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlueTree</title>
+    <link rel="stylesheet" th:href="@{/css/BlueTree-styles2.css}">
+    <link rel="stylesheet" href="./BlueTree-styles.css">
+    <script th:src="@{http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js}" type="text/javascript"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script type="text/javascript" th:src="@{/js/blueTree-listener2.js}"></script>
+</head>
+<body>
+    <header>
+        <div id="top-nav">
+            <h3 id="tree-symbol">&#127794;<h3 id="logo"><strong> BlueTree</strong></h3></h3> <h3 class="user-log"></h3> <button class="logout button2">Logout</button>
+        </div>
+        <div id="transparent"><div id="loading"><div id="circle"></div></div></div>    
+    </header>
+    <main>
+        <div class="dashboard">
+            
+            <div class="employee-db box1"  th:style="'background: url(/images/employee-db.jpg) no-repeat;'">
+                <!-- <img src="./create.jpg" alt="" class="image1"> -->
+                <h2 style="position:absolute;" class="dash-font">Manage Employee Data</h2>
+                <a href="/home">
+                    <div class="image1"></div>
+                </a>
+            </div>
+            <div class="create box1" th:style="'background: url(/images/create.jpg) no-repeat;'">
+                <h2 style="position:absolute;" class="dash-font">Add New Admin</h2>
+                <a href="/create">
+                    <div class="image1"></div>
+                </a>
+            </div>
+            <div class="delete box1" style="width: 300px;" th:style="'background: url(/images/delete.jpg) no-repeat;'">
+                <h2 style="position:absolute;"  class="dash-font">Remove Existing Admin</h2>
+                <a href="/delete">
+                    <div class="image1"></div>
+                </a>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div id="bottom">
+            <div id="footer-box1">
+                <h3 style="margin: 5px; margin-left: 0px;">Contact Info:</h3>
+                <strong style="font-weight: bold;">Name: </strong>Kabir Sethi<br>
+                <strong style="font-weight: bold;">Email: </strong><a href="mailto:kabirsethione@gmail.com">kabirsethione@gmail.com</a>
+            </div>
+            <div id="footer-box2">
+                <h3 style="margin: 5px; margin-left: 0px;">Contact Info:</h3>
+                <strong style="font-weight: bolder;">GitHub: </strong><a href="https://github.com/kabirsethionw">GitHub Profile</a><br>
+                <strong style="font-weight: bolder;">LinkIn: </strong><a href="https://www.linkedin.com/in/kabir-sethi-946211200/">LinkIn Profile</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', (e) => {
+    if (document.body.classList.contains("onScrollBar") === false) {
+        document.body.classList.add("onScrollBar");
+        setTimeout(function(){ document.body.classList.remove("onScrollBar"); }, 1000);
+        
+        }
+        }, true); 
+    </script>
+</body>
+</html>

@@ -1,6 +1,6 @@
 $(document).ready(function () {
 	var errorSymbol = document.querySelector("#add-form > span").innerHTML;
-
+	var userSymbol = " &#x1F464; ";
     
     $("#find-control-button").click(function(e){
         e.preventDefault();
@@ -64,9 +64,14 @@ $(document).ready(function () {
             success:function(data){
                 $("#transparent").css("display", "none");
                 document.querySelector("#find-form > span").style.display ="none";
+                var table = document.querySelector("#query-result-table");
+                var oldTbody = document.querySelector("#query-result-table > tbody");
+                table.removeChild(oldTbody);
+                var newTbody = document.createElement("tbody");
+                table.appendChild(newTbody);
                 if (params.split("&")[0].split("=")[1] == "id") {
-                    data["updatedAt"] = data["updatedAt"].split("T")[0]
-                    var parent = document.querySelector("#query-result-table > tbody")
+                    data["updatedAt"] = data["updatedAt"].split("T")[0];
+                    var parent = document.querySelector("#query-result-table > tbody");
                     var row = document.createElement("tr");
                     var dat = document.createElement("td");
                     dat.innerHTML = 1;
@@ -97,6 +102,7 @@ $(document).ready(function () {
                 }    
             },
             error:function(data){
+                $("#transparent").css("display", "none");
 				var error =  document.querySelector("#find-form > span");
 				error.innerHTML = errorSymbol+" "+data.responseText;
 				error.style.display ="block";           
@@ -224,6 +230,58 @@ $(document).ready(function () {
         },
        
     });
+
+
+    
+    $("#upload-excel").on("submit", function(e){
+    	e.preventDefault();
+    	alert("Uploading form, please reload the page to see updates.");
+        var fileInput = $(this);
+        // var form = new FormData();
+        // form.append("file", fileInput.files[0], fileInput.files[0].value);
+        
+        // var settings = {
+        //   "url": "http://localhost:8072/excelUpload/save",
+        //   "method": "POST",
+        //   "timeout": 0,
+        //   "processData": false,
+        //   "mimeType": "multipart/form-data",
+        //   "contentType": false,
+        //   "data": form
+        // };
+        
+        // $.ajax(settings).done(function (response) {
+        //   alert("done!");
+        // });
+
+        var formdata = new FormData();
+formdata.append("file", fileInput.files[0], "/C:/Users/Kabir Sethi/eclipse-workspace/BlueTree-Intership-Kabir/employees.xlsx");
+
+var requestOptions = {
+  method: 'POST',
+  body: formdata,
+  redirect: 'follow'
+};
+
+fetch("http://localhost:8072/excelUpload/save", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log("Done"))
+  .catch(error => console.log('error', error));
+
+    });
+
+    $(".logout").click(function(e){
+        // alert($.cookie('token'));
+        $.removeCookie('name', { path: '/' });
+         $.removeCookie('token', { path: '/' }); 
+         $(location).attr('href', '/login');
+        });
+      
+      //User-log  
+      var userLog = document.querySelector(".user-log");
+     if(userLog != undefined){
+        userLog.innerHTML = userSymbol+$.cookie("name")+" ";
+     }
 
 });
 

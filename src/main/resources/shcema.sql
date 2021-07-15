@@ -11,5 +11,4 @@ create table employee(
      joinedAt timestamp ,
      leftAt timestamp
 );
-
 select * from employee;

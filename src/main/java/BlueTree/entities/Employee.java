@@ -18,7 +18,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -32,7 +31,7 @@ import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 
 
-//@Data
+@Data
 @Entity
 @NoArgsConstructor(access=AccessLevel.PUBLIC, force=true)
 @AllArgsConstructor
@@ -59,7 +58,7 @@ public class Employee {
 	@Size(min=2, max=30, message="Name field must be atleast 2 characters long and atmost 30 characters long.")
 	private String name;
 	
-	@Email
+	@Email(message = "Invalid email.")
 	@NotNull
 	private String email;
 	
@@ -73,7 +72,7 @@ public class Employee {
 	private String address;
 	
 	@NotNull
-	@Pattern(regexp="(^$|[0-9]{10})") //10 digits regular expression
+	@Pattern(regexp="(^$|[0-9]{10})", message="Invalid phone no.") //10 digits regular expression
 	private String phone; 
 	
 	@NotNull

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlueTree</title>
+    <link rel="stylesheet" href="./BlueTree-styles.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src="./BlueTree-styles.css"></script>
+</head>
+<body>
+    <header>
+        <div id="top-nav">
+            <h3 id="tree-symbol">&#127794;<h3 id="logo"><strong> BlueTree</strong></h3></h3> <button class="logout button1">Logout</button>
+        </div>
+        <div id="transparent"><div id="loading"><div id="circle"></div></div></div>    
+    </header>
+    <main>
+        <img src="./login.jpg" alt="" class="login-theme">
+        <div id="login-sheet">
+                <br><br><br>
+                <h1>Admin Login</h1> 
+                <form action="" id="login-form" enctype="text/plain">
+                    <label for="username">Username: </label>
+                    <input type="text" name="username" id="username" required><br>
+                    <label for="password">Password: </label>
+                    <input type="text" name="password" id="password" required ><br>
+                    <button id="login" class="login button1" >Login</button><span id="error-message" style="position: relative; bottom: 3px; margin-left: 5px;">&#10008; Error: </span>
+                </select>
+            </form>
+        </div>
+        
+    </main>
+    <footer>
+        <div id="bottom">
+            <div id="footer-box1">
+                <h3 style="margin: 5px; margin-left: 0px;">Contact Info:</h3>
+                <strong style="font-weight: bold;">Name: </strong>Kabir Sethi<br>
+                <strong style="font-weight: bold;">Email: </strong><a href="mailto:kabirsethione@gmail.com">kabirsethione@gmail.com</a>
+            </div>
+            <div id="footer-box2">
+                <h3 style="margin: 5px; margin-left: 0px;">Contact Info:</h3>
+                <strong style="font-weight: bolder;">GitHub: </strong><a href="https://github.com/kabirsethionw">GitHub Profile</a><br>
+                <strong style="font-weight: bolder;">LinkIn: </strong><a href="https://www.linkedin.com/in/kabir-sethi-946211200/">LinkIn Profile</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', (e) => {
+    if (document.body.classList.contains("onScrollBar") === false) {
+        document.body.classList.add("onScrollBar");
+        setTimeout(function(){ document.body.classList.remove("onScrollBar"); }, 1000);
+        
+        }
+        }, true); 
+    </script>
+</body>
+</html>

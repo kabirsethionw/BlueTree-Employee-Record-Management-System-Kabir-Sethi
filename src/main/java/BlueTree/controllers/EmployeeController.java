@@ -56,18 +56,15 @@ public class EmployeeController {
 	}
 	
 	@PostMapping("/add")
-	public ResponseEntity<?> addEmployee(@RequestBody Employee emp){
+	public ResponseEntity<?> addEmployee(@RequestBody Employee emp) throws Exception{
 		try {
-		
-			if(emp.getDob().getYear()-LocalDate.now().getYear()>18) {
-				System.out.println("hello");
-				emp.setStatus(Status.NOT_WORKING);
-				employeeRepository.save(emp);
+			System.out.println(emp.getDob().getYear()+" "+LocalDate.now().getYear());
+			if(LocalDate.now().getYear()-emp.getDob().getYear()<18) {
 				String message = "User of age 18 or under are not allowed.";
-				return new ResponseEntity<>(message, HttpStatus.CONFLICT);
+				throw new Exception(message);
 			}
 			else {
-				System.out.println("YEs :"+emp.getAddress());
+				System.out.println("Yes :"+emp.getAddress());
 				employeeRepository.save(emp);
 				return new ResponseEntity<>(emp, HttpStatus.CREATED);
 			}
@@ -76,6 +73,9 @@ public class EmployeeController {
 			if(e instanceof ConstraintViolationException) {
 				throw e;
 			}else {
+				if(e.getMessage().contains("18")) {
+					return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_ACCEPTABLE);
+				}
 				String message = "Internal Server Error, response status: 500";
 				return new ResponseEntity<>(message, HttpStatus.INTERNAL_SERVER_ERROR);
 			}
@@ -94,9 +94,15 @@ public class EmployeeController {
 			return new ResponseEntity<>(empList, HttpStatus.OK);
 		}
 		}catch(Exception e) {
+			System.out.println(e.getMessage());
 			if(e instanceof ConstraintViolationException) {
 				throw e;
-			}else {
+			}
+			else if(e instanceof NumberFormatException) {
+				String message = "Invalid data type.";
+				return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
+			}
+			else {
 				String message = "Internal Server Error, response status: 500";
 				return new ResponseEntity<>(message, HttpStatus.INTERNAL_SERVER_ERROR);
 			}
